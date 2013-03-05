@@ -46,7 +46,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
     public static final String TELNETD_PORTS_PROPERTY = "com.peergreen.telnetd.ports";
 
     /**
-     * Max number of concurrent connections (retract one (1) because telnetd use 1 thread for itself).
+     * Max number of concurrent connections.
      */
     public static final int MAX_CLIENTS = 20;
     private ServiceTracker<CommandProcessor, Telnetd> tracker;
