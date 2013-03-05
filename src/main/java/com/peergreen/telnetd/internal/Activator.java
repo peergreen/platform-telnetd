@@ -84,7 +84,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
             Telnetd telnetd = null;
             try {
                 telnetd = new Telnetd(processor);
-                telnetd.setExecutors(Executors.newFixedThreadPool(MAX_CLIENTS, new TelnetdThreadFactory()));
+                telnetd.setExecutors(Executors.newFixedThreadPool(MAX_CLIENTS + 1, new TelnetdThreadFactory()));
                 telnetd.setHandler(handler);
                 telnetd.setPorts(getPorts());
                 telnetd.start();
