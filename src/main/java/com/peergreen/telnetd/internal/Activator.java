@@ -20,7 +20,6 @@ import static java.lang.String.format;
 
 import java.io.IOException;
 import java.util.Dictionary;
-import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
 import java.util.TreeSet;
