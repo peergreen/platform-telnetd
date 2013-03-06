@@ -48,7 +48,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
     /**
      * Max number of concurrent connections.
      */
-    public static final int MAX_CLIENTS = 20;
+    public static final int MAX_CLIENTS = 2;
     private ServiceTracker<CommandProcessor, Telnetd> tracker;
     private BundleContext bundleContext;
     private ThreadGroup threadGroup;
@@ -72,7 +72,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
         tracker.close();
         handler.stop();
         // If the user tries to stop this bundle himself, we deliberately shutdown the entire platform
-       // context.getBundle(0).stop();
+        // context.getBundle(0).stop();
     }
 
     @Override
@@ -103,7 +103,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
     private void registerTelnetCommands(Telnetd telnetd) {
         Dictionary<String, Object> properties = new Hashtable<String, Object>();
         properties.put("osgi.command.scope", "telnetd");
-        properties.put("osgi.command.function", new String[] {"info", "connections"});
+        properties.put("osgi.command.function", new String[]{"info", "connections"});
         bundleContext.registerService(Telnetd.class.getName(), telnetd, properties);
     }
 
