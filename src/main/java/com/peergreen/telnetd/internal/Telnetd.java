@@ -121,8 +121,6 @@ public class Telnetd implements Runnable {
     @Override
     public void run() {
 
-        System.out.printf("Starting Telnet daemon%n");
-
         while (selector.isOpen()) {
             try {
                 selector.select();
