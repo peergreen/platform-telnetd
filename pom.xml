@@ -24,7 +24,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.peergreen.telnetd</groupId>
-  <artifactId>platform-telnetd</artifactId>
+  <artifactId>telnetd</artifactId>
   <packaging>bundle</packaging>
   <version>1.0.0-SNAPSHOT</version>
 
