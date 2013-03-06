@@ -15,7 +15,7 @@ Listening ports can be configured through a System property `com.peergreen.telne
 
 By default (or if no port is specified), the daemon is bound to the `10023` port (all interfaces).
 
-Maximum concurrent number of clients cannot be changed and is set to `20`.
+Maximum concurrent number of clients cannot be changed and is set to `2`.
 
 Connecting
 ------------------
