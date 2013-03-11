@@ -6,7 +6,7 @@ Installation
 The telnet daemon should already be installed on the platform.
 If not, install with the following command:
 
-    start mvn:com.peergreen.telnetd/platform-telnetd/1.0.0-SNAPSHOT
+    start mvn:com.peergreen.telnetd/telnetd/1.0.0-SNAPSHOT
 
 
 Configuration
