@@ -57,14 +57,26 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
     @Override
     public void start(BundleContext context) throws Exception {
         bundleContext = context;
-        threadGroup = new ThreadGroup("Peergreen Telnetd");
-        threadGroup.setDaemon(true);
+        initThreadGroup();
 
         handler = new ShelbieHandler(bundleContext);
         handler.start();
 
         tracker = new ServiceTracker<CommandProcessor, Telnetd>(context, CommandProcessor.class, this);
         tracker.open();
+    }
+
+    private void initThreadGroup() {
+        ServiceTracker<ThreadGroup, ThreadGroup> groupTracker = new ServiceTracker<ThreadGroup, ThreadGroup>(bundleContext, ThreadGroup.class, null);
+        groupTracker.open();
+        ThreadGroup parent = groupTracker.getService();
+        if (parent == null) {
+            threadGroup = new ThreadGroup("Peergreen Telnetd");
+        } else {
+            threadGroup = new ThreadGroup(parent, "Peergreen Telnetd");
+        }
+        threadGroup.setDaemon(true);
+        groupTracker.close();
     }
 
     @Override
