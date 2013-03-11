@@ -45,6 +45,7 @@ public class Telnetd implements Runnable {
     private final CommandProcessor processor;
 
     private ExecutorService executors;
+    private ExecutorService daemonExecutor;
     private Handler handler;
     private Set<Integer> ports = Collections.singleton(DEFAULT_PORT);
     private Selector selector;
@@ -63,6 +64,10 @@ public class Telnetd implements Runnable {
 
     public void setExecutors(ExecutorService executors) {
         this.executors = executors;
+    }
+
+    public void setDaemonExecutor(ExecutorService daemonExecutor) {
+        this.daemonExecutor = daemonExecutor;
     }
 
     public void setHandler(Handler handler) {
@@ -95,7 +100,7 @@ public class Telnetd implements Runnable {
             }
         }
 
-        executors.submit(this);
+        daemonExecutor.submit(this);
     }
 
     private static void close(Closeable... closeables) {

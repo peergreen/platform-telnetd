@@ -96,7 +96,8 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
             Telnetd telnetd = null;
             try {
                 telnetd = new Telnetd(processor);
-                telnetd.setExecutors(Executors.newFixedThreadPool(MAX_CLIENTS + 1, new TelnetdThreadFactory()));
+                telnetd.setExecutors(Executors.newFixedThreadPool(MAX_CLIENTS, new TelnetConnectionThreadFactory()));
+                telnetd.setDaemonExecutor(Executors.newSingleThreadExecutor(new TelnetdThreadFactory()));
                 telnetd.setHandler(handler);
                 telnetd.setPorts(getPorts());
                 telnetd.start();
@@ -144,6 +145,17 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
     }
 
     private class TelnetdThreadFactory implements ThreadFactory {
+
+        @Override
+        public Thread newThread(Runnable r) {
+            Thread thread = new Thread(threadGroup, r);
+            thread.setName(format("%s Daemon", threadGroup.getName()));
+            thread.setDaemon(threadGroup.isDaemon());
+            return thread;
+        }
+    }
+
+    private class TelnetConnectionThreadFactory implements ThreadFactory {
 
         private AtomicInteger index = new AtomicInteger(0);
 
