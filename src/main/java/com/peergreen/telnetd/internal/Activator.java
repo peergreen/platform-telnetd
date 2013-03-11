@@ -139,6 +139,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
         public Thread newThread(Runnable r) {
             Thread thread = new Thread(threadGroup, r);
             thread.setName(format("%s Connection %d", threadGroup.getName(), index.getAndIncrement()));
+            thread.setDaemon(threadGroup.isDaemon());
             return thread;
         }
     }
