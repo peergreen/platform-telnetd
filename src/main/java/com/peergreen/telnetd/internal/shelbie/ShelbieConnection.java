@@ -110,6 +110,7 @@ public class ShelbieConnection implements Connection {
         // Store some global properties
         console.getSession().put(Subject.class.getName(), subject);
         console.getSession().put("terminal", terminal);
+        console.getSession().put("application.name", "peergreen-platform");
 
         console.run();
 
@@ -120,7 +121,7 @@ public class ShelbieConnection implements Connection {
 
     private Subject createLocalSubject() {
         Subject subject = new Subject();
-        subject.getPrincipals().add(new UserPrincipal(System.getProperty("user.name")));
+        subject.getPrincipals().add(new UserPrincipal("anonymous"));
         subject.getPrincipals().add(new RolesPrincipal("admin"));
         return subject;
     }
