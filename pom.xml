@@ -24,7 +24,7 @@
   <groupId>com.peergreen.telnetd</groupId>
   <artifactId>telnetd</artifactId>
   <packaging>bundle</packaging>
-  <version>1.0.0</version>
+  <version>1.0.1-SNAPSHOT</version>
 
   <name>Peergreen Telnetd</name>
 
@@ -104,10 +104,4 @@
       <layout>default</layout>
     </repository>
   </repositories>
-
-
-
-  <scm>
-    <tag>TELNETD_1_0_0</tag>
-  </scm>
 </project>
