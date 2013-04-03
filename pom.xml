@@ -28,6 +28,14 @@
 
   <name>Peergreen Telnetd</name>
 
+  <scm>
+    <connection>scm:git:https://forge.peergreen.com/git/git/platform/telnetd.git</connection>
+    <developerConnection>scm:git:https://forge.peergreen.com/git/git/platform/telnetd.git</developerConnection>
+    <url>https://forge.peergreen.com/git/summary/?r=platform/telnetd.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
+
   <dependencies>
     <dependency>
       <groupId>org.osgi</groupId>
