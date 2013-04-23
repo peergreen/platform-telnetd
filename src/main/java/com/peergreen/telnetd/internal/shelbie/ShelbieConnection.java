@@ -16,6 +16,9 @@
 
 package com.peergreen.telnetd.internal.shelbie;
 
+import java.io.FilterOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Date;
@@ -89,7 +92,8 @@ public class ShelbieConnection implements Connection {
         JLineConsole console = null;
         Terminal terminal = new AnsiUnsupportedTerminal();
         try {
-            PrintStream out = new PrintStream(socket.getOutputStream());
+            // Transform '\n' into '\r\n' to satisfy telnet windows clients
+            PrintStream out = new PrintStream(new LfToCrLfFilterOutputStream(socket.getOutputStream()));
             console = new JLineConsole(
                     processor,
                     completer,
@@ -125,5 +129,27 @@ public class ShelbieConnection implements Connection {
         subject.getPrincipals().add(new RolesPrincipal("admin"));
         return subject;
     }
+
+    private class LfToCrLfFilterOutputStream extends FilterOutputStream {
+
+        private boolean lastWasCr;
+
+        public LfToCrLfFilterOutputStream(OutputStream out) {
+            super(out);
+        }
+
+        @Override
+        public void write(int b) throws IOException {
+            if (!lastWasCr && b == '\n') {
+                out.write('\r');
+                out.write('\n');
+            } else {
+                out.write(b);
+            }
+            lastWasCr = b == '\r';
+        }
+
+    }
+
 
 }

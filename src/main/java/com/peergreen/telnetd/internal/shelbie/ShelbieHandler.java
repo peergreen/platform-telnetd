@@ -160,29 +160,7 @@ public class ShelbieHandler implements Handler, ServiceTrackerCustomizer<Object,
         }
     }
 
-        /*
-
-    public class LfToCrLfFilterOutputStream extends FilterOutputStream {
-
-        private boolean lastWasCr;
-
-        public LfToCrLfFilterOutputStream(OutputStream out) {
-            super(out);
-        }
-
-        @Override
-        public void write(int b) throws IOException {
-            if (!lastWasCr && b == '\n') {
-                out.write('\r');
-                out.write('\n');
-            } else {
-                out.write(b);
-            }
-            lastWasCr = b == '\r';
-        }
-
-    }
-
+     /*
     public class CrLfToCrFilterInputStream extends FilterInputStream {
 
         private boolean lastWasCr;
