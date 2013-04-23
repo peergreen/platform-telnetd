@@ -33,6 +33,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 
 import org.apache.felix.service.command.CommandProcessor;
+import org.apache.felix.service.command.Descriptor;
 
 /**
  * User: guillaume
@@ -171,6 +172,7 @@ public class Telnetd implements Runnable {
         }
     }
 
+    @Descriptor("Prints daemon's usage statistics")
     public void info() {
         System.out.printf("Peergreen Telnet Daemon%n");
         System.out.printf("------------------------------------------%n");
@@ -184,6 +186,7 @@ public class Telnetd implements Runnable {
         System.out.printf("  Refused connections:   %d%n", refused);
     }
 
+    @Descriptor("Prints connection's information about current connections")
     public void connections() {
         for (Connection connection : connections) {
             System.out.printf("Telnet Connection%n");
