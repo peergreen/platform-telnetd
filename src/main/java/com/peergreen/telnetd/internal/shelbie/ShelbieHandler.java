@@ -103,12 +103,13 @@ public class ShelbieHandler implements Handler, ServiceTrackerCustomizer<Object,
     @Override
     public Object addingService(ServiceReference<Object> reference) {
         Object o = bundleContext.getService(reference);
-        if (o instanceof BrandingService) {
+        // Only accept services coming from our launcher
+        if ((o instanceof BrandingService) && (reference.getBundle().getBundleId() == 0)) {
             brandingService = (BrandingService) o;
             return brandingService;
         }
 
-        if (o instanceof PromptService) {
+        if ((o instanceof PromptService) && (reference.getBundle().getBundleId() == 0)) {
             promptService = (PromptService) o;
             return promptService;
         }
