@@ -84,7 +84,7 @@ public class Activator implements BundleActivator, ServiceTrackerCustomizer<Comm
         tracker.close();
         handler.stop();
         // If the user tries to stop this bundle himself, we deliberately shutdown the entire platform
-        // context.getBundle(0).stop();
+        context.getBundle(0).stop();
     }
 
     @Override
