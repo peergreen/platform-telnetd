@@ -24,7 +24,7 @@
   <groupId>com.peergreen.telnetd</groupId>
   <artifactId>telnetd</artifactId>
   <packaging>bundle</packaging>
-  <version>1.0.1</version>
+  <version>1.0.2-SNAPSHOT</version>
 
   <name>Peergreen Telnetd</name>
 
@@ -32,7 +32,7 @@
     <connection>scm:git:https://forge.peergreen.com/git/git/platform/telnetd.git</connection>
     <developerConnection>scm:git:https://forge.peergreen.com/git/git/platform/telnetd.git</developerConnection>
     <url>https://forge.peergreen.com/git/summary/?r=platform/telnetd.git</url>
-    <tag>TELNETD_1_0_1</tag>
+    <tag>HEAD</tag>
   </scm>
 
 
